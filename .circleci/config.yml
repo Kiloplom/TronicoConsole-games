@@ -19,9 +19,22 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       - run:
+          name: "Create build directory and enter it"
+          command: |
+            mkdir -p build
+            cd build
+      - run:
+          name: "Check if build directory exists and log"
+          command: |
+            if [ -d "build" ]; then
+              echo "The build directory exists."
+            else
+              echo "Error: The build directory does not exist."
+              exit 1
+            fi
+      - run:
           name: "Say hello"
           command: "echo Hello, World!"
-          comand: "mkdir build && cd build"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/workflows/ & https://circleci.com/docs/configuration-reference/#workflows
