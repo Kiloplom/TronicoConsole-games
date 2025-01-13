@@ -22,16 +22,19 @@ jobs:
           name: "Create build directory and enter it and build the app"
           command: |
             ls
-            cd /home/circleci/project/TronicoConsole-games/
-            ls
             mkdir -p build
+            ls
             cd build
+            ls
             cmake ..
+            ls
             cmake --build .
+            ls
       - run:
           name: "Check if build directory exists and log"
           command: |
-            cd /home/circleci/project/TronicoConsole-games/build/
+            cd build
+            ls
             if [ -f "ArcadeGamesProject" ]; then
               echo "The ArcadeGamesProject fiel exists."
             else
