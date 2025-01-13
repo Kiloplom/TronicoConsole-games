@@ -19,27 +19,19 @@ jobs:
       # Checkout the code as the first step.
       - checkout
       - run:
-          name: "Create build directory and enter it"
+          name: "Create build directory and enter it and build the app"
           command: |
+            ls
+            cd /home/circleci/project/TronicoConsole-games/
+            ls
             mkdir -p build
             cd build
-      - run:
-          name: "Check if build directory exists and log"
-          command: |
-            if [ -d "build" ]; then
-              echo "The build directory exists."
-            else
-              echo "Error: The build directory does not exist."
-              exit 1
-            fi      
-      - run:
-          name: "Build the app"
-          command: |
             cmake ..
             cmake --build .
       - run:
           name: "Check if build directory exists and log"
           command: |
+            cd /home/circleci/project/TronicoConsole-games/build/
             if [ -f "ArcadeGamesProject" ]; then
               echo "The ArcadeGamesProject fiel exists."
             else
